@@ -52,14 +52,14 @@ pipeline{
 				stage('Build Docker Image'){
 					steps{
 						//"docker build -t samm18/jenkinimage:$env.BUILD_TAG"
-						sript{
+						script{
 							dockerImage = docker.build("samm18/jenkinimage:${env.BUILD_TAG}")
 						}
 					}
 				}
 				stage('Push Docker Image'){
 					steps{
-						scipt{
+						script{
 							docker.withRegistry('','dockerhub'){
 							dockerImage.push();
 							dockerImage.push('latest');
